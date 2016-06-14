@@ -1,0 +1,9 @@
+[package]
+name = "pid_children"
+version = "0.1.0"
+authors = ["依云 <lilydjwg@gmail.com>"]
+
+[dependencies]
+
+[profile.release]
+lto = true
