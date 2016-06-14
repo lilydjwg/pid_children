@@ -45,8 +45,7 @@ fn get_all_children_for_pid_old_kernel(pid: &str) -> Vec<String> {
     let mut children_map = HashMap::new();
 
     for d in read_dir("/proc").unwrap() {
-        let path = d.unwrap().path();
-        let pid = path.file_name().unwrap().to_string_lossy().into_owned();
+        let pid = d.unwrap().file_name().to_string_lossy().into_owned();
         if pid.parse::<usize>().is_ok() {
             if let Some(ppid) = get_ppid_for(&pid) {
                 let mut children = children_map.entry(ppid).or_insert_with(Vec::new);
