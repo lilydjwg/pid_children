@@ -64,10 +64,8 @@ fn get_all_children_for_pid_from_map(map: &HashMap<String,Vec<String>>, pid: &st
         for pid in children {
             let grandchildren = get_all_children_for_pid_from_map(map, pid);
             pids.push(pid.to_string());
-            if !grandchildren.is_empty() {
-                for child in grandchildren {
-                    pids.push(child.to_string());
-                }
+            for child in grandchildren {
+                pids.push(child.to_string());
             }
         }
     }
@@ -113,3 +111,5 @@ fn main() {
         println!("{}", pids.join(" "));
     }
 }
+
+// vim: se sw=4:
