@@ -1,4 +1,4 @@
-[root]
+[[package]]
 name = "pid_children"
 version = "0.1.0"
 
