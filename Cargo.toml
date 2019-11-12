@@ -5,6 +5,14 @@ authors = ["依云 <lilydjwg@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+libc = "*"
+
+[[bin]]
+name = "pid_children"
+
+[[bin]]
+name = "kill_children"
+path = "src/kill.rs"
 
 [profile.release]
 lto = true
