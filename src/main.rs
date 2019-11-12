@@ -58,7 +58,9 @@ fn get_ppid_for(pid: &str) -> Option<String> {
 fn main() {
     for pid in std::env::args().skip(1) {
         let pids = get_all_children_for_pid(&pid);
-        println!("{}", pids.join(" "));
+        if !pids.is_empty() {
+            println!("{}", pids.join(" "));
+        }
     }
 }
 
