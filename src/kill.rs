@@ -7,6 +7,15 @@ fn main() {
     for pid in util::get_all_children_for_pid(&parent_pid) {
         if pid != my_pid {
             let pid = pid.parse().unwrap();
+            unsafe { libc::kill(pid, libc::SIGTERM); }
+        }
+    }
+
+    std::thread::sleep(std::time::Duration::from_secs(1));
+
+    for pid in util::get_all_children_for_pid(&parent_pid) {
+        if pid != my_pid {
+            let pid = pid.parse().unwrap();
             unsafe { libc::kill(pid, libc::SIGKILL); }
         }
     }
